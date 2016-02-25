@@ -98,6 +98,24 @@ However, when using this validator to create a type, you will have to specify th
 typealias NonEmptyListOfStrings = Validated<[String], NonEmptyCollectionValidator<[String]>>
 ```
 
+# Does this Library Enable Dependent Types?
+
+No, not really. Dependent types would allow us to define types, solely based on values. This library only allows us to validate if a type is of a specified type `<T>` based on its value and a validator. The value itself doesn't change the type information. 
+
+Truely dependent types would create the following results:
+```swift
+[1, 2, 3] // type = Array<count:3 type:Int>
+[1, 2, 3, 4] // type = Array<count:4 type:Int>
+```
+
+Using Validated we can only verify if a type falls into one of our statically defined categories:
+```swift
+ListOf3([1,2,3]) // type = ListOf3<Array<Int>
+ListOf3([1,2,3,4]) // type = nil
+```
+
+However, these statically provided checks can still add a lot of value to your code; see the examples above.
+
 # Get in touch
 
 If you have any questions, you can find me on twitter [@benjaminencz](https://twitter.com/benjaminencz).
