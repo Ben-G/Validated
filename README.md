@@ -1,12 +1,13 @@
 #Validated
 
-Validated is a μ-library that allows you make better use of Swift's type system by providing tools for easily generating new types with built-in guarantees.
+Validated is a μ-library (~50 Source Lines of Code) that allows you make better use of Swift's type system by providing tools for easily generating new types with built-in guarantees.
 
 Validated allows you to use the type system to verify properties of your values, providing a new level of compile time guarantees.
 
 Using validators you can define new types that add guarantees to existing types:
 
 ```swift
+// Create a new string type that can never be empty
 typealias NonEmptyString = Validated<String, NonEmptyStringValidator>
 ```
 
@@ -67,9 +68,9 @@ The underlying value (the full `User` value) is stored in the `.value` property 
 
 Validated provides two further features that might be non-obvious.
 
-###Validated2
+###Validated2, Validated3
 
-Using `Validated2` you can create a new type that has two requirements. Both need to be verified successfully in order for the type to initialize:
+Using `Validated2` or `Validated3` you can create a new type that has two or three requirements, respectively. All requirements need to be verified successfully in order for the type to initialize:
 
 ```swift
 typealias AllCapsNonEmptyString =
@@ -96,3 +97,7 @@ However, when using this validator to create a type, you will have to specify th
 ```swift
 typealias NonEmptyListOfStrings = Validated<[String], NonEmptyCollectionValidator<[String]>>
 ```
+
+# Get in touch
+
+If you have any questions, you can find me on twitter [@benjaminencz](https://twitter.com/benjaminencz).
