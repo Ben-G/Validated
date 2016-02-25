@@ -49,6 +49,23 @@ class ValidatedTests: XCTestCase {
         XCTAssertEqual(valueValidated!, [1,2,3,4,5,6,7,8,9,10,11])
     }
 
+    // MARK: Custom Type Tests
+
+    func testValidatesLoggedInUser() {
+        // Define a type for a logged in user
+        typealias LoggedInUser = Validated<User, LoggedInValidator>
+
+        let valueNotValidated = LoggedInUser(
+            User(username: "User", loggedIn: false)
+        )?.value
+        XCTAssertNil(valueNotValidated)
+
+        let valueValidated = LoggedInUser(
+            User(username: "User", loggedIn: true)
+        )?.value
+        XCTAssertEqual(valueValidated?.username, "User")
+    }
+
     // MARK: Validate2 Tests
 
     func testValidatesEmptyStringAndAllCaps() {

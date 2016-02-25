@@ -12,6 +12,7 @@
 		25C79AAD1C7EA40B00F76B49 /* ValidatedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C79AAC1C7EA40B00F76B49 /* ValidatedTests.swift */; };
 		25C79AB81C7EA5A800F76B49 /* Validated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C79AB71C7EA5A800F76B49 /* Validated.swift */; };
 		25C79ABC1C7EA71300F76B49 /* ExampleValidators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C79ABB1C7EA71300F76B49 /* ExampleValidators.swift */; };
+		25C79ABE1C7EAF7E00F76B49 /* CustomTypeExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C79ABD1C7EAF7E00F76B49 /* CustomTypeExample.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +34,7 @@
 		25C79AAE1C7EA40B00F76B49 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		25C79AB71C7EA5A800F76B49 /* Validated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validated.swift; sourceTree = "<group>"; };
 		25C79ABB1C7EA71300F76B49 /* ExampleValidators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleValidators.swift; sourceTree = "<group>"; };
+		25C79ABD1C7EAF7E00F76B49 /* CustomTypeExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTypeExample.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				25C79AAC1C7EA40B00F76B49 /* ValidatedTests.swift */,
+				25C79ABD1C7EAF7E00F76B49 /* CustomTypeExample.swift */,
 				25C79AAE1C7EA40B00F76B49 /* Info.plist */,
 				25C79ABB1C7EA71300F76B49 /* ExampleValidators.swift */,
 			);
@@ -208,6 +211,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				25C79ABE1C7EAF7E00F76B49 /* CustomTypeExample.swift in Sources */,
 				25C79AAD1C7EA40B00F76B49 /* ValidatedTests.swift in Sources */,
 				25C79ABC1C7EA71300F76B49 /* ExampleValidators.swift in Sources */,
 			);
