@@ -6,16 +6,16 @@
 //  Copyright © 2016 Benjamin Encz. All rights reserved.
 //
 
-protocol Validator {
+public protocol Validator {
     typealias WrappedType
 
     static func validate(value: WrappedType) -> Bool
 }
 
-struct Validated<WrapperType, T: Validator where T.WrappedType == WrapperType> {
-    let value: WrapperType
+public struct Validated<WrapperType, T: Validator where T.WrappedType == WrapperType> {
+    public let value: WrapperType
 
-    init?(_ wrapped: WrapperType) {
+    public init?(_ wrapped: WrapperType) {
         if T.validate(wrapped) {
             self.value = wrapped
         } else {
@@ -24,13 +24,13 @@ struct Validated<WrapperType, T: Validator where T.WrappedType == WrapperType> {
     }
 }
 
-struct Validated2<
+public struct Validated2<
     WrapperType, T: Validator,
     F: Validator where T.WrappedType == WrapperType,
     F.WrappedType == WrapperType> {
-        let value: WrapperType
+        public let value: WrapperType
 
-        init?(_ string: WrapperType) {
+        public init?(_ string: WrapperType) {
             if T.validate(string) && F.validate(string) {
                 self.value = string
             } else {

@@ -8,7 +8,7 @@
 
 @testable import Validated
 
-struct NonEmptyString: Validator {
+struct _NonEmptyString: Validator {
     static func validate(value: String) -> Bool {
         if !value.isEmpty {
             return true
@@ -18,7 +18,7 @@ struct NonEmptyString: Validator {
     }
 }
 
-struct AllCapsLatinString: Validator {
+struct _AllCapsLatinString: Validator {
     static func validate(value: String) -> Bool {
         return value.characters.reduce(true) { accu, character in
             return ("A"..."Z").contains(character)
@@ -26,7 +26,7 @@ struct AllCapsLatinString: Validator {
     }
 }
 
-struct CountGreater10<T: CollectionType>: Validator {
+struct _CountGreater10<T: CollectionType>: Validator {
     static func validate(value: T) -> Bool {
         if value.count > 10 {
             return true
@@ -36,7 +36,7 @@ struct CountGreater10<T: CollectionType>: Validator {
     }
 }
 
-struct SumLarger20: Validator {
+struct _SumLarger20: Validator {
     static func validate(value: [Int]) -> Bool {
         if value.reduce(0, combine: +) > 20 {
             return true
