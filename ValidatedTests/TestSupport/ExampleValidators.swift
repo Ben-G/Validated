@@ -15,11 +15,7 @@
 
 struct NonEmptyStringValidator: Validator {
     static func validate(value: String) -> Bool {
-        if !value.isEmpty {
-            return true
-        } else {
-            return false
-        }
+        return !value.isEmpty
     }
 }
 
@@ -41,30 +37,18 @@ struct ContainsYorZ: Validator {
 
 struct NonEmptyCollectionValidator<T: CollectionType>: Validator {
     static func validate(value: T) -> Bool {
-        if !value.isEmpty {
-            return true
-        } else {
-            return false
-        }
+        return !value.isEmpty
     }
 }
 
 struct CountGreater10Validator<T: CollectionType>: Validator {
     static func validate(value: T) -> Bool {
-        if value.count > 10 {
-            return true
-        } else {
-            return false
-        }
+        return value.count > 10
     }
 }
 
 struct SumLarger20Validator: Validator {
     static func validate(value: [Int]) -> Bool {
-        if value.reduce(0, combine: +) > 20 {
-            return true
-        } else {
-            return false
-        }
+        return value.reduce(0, combine: +) > 20
     }
 }
