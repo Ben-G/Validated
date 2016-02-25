@@ -1,4 +1,4 @@
-[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) [![License MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/ReSwift/ReSwift/blob/master/LICENSE.md)
+[![CocoaPods Compatible](https://img.shields.io/cocoapods/v/Validated.svg?style=flat-square)](https://cocoapods.org/pods/Validated) [![Platform support](https://img.shields.io/badge/platform-ios%20%7C%20osx%20%7C%20tvos%20%7C%20watchos-lightgrey.svg?style=flat-square)](https://github.com/Ben-G/Validated/blob/master/LICENSE.md)[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) [![License MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/Ben-G/Validated/blob/master/LICENSE.md)
 
 
 #Validated
@@ -118,6 +118,30 @@ ListOf3([1,2,3,4]) // type = nil
 ```
 
 However, these statically provided checks can still add a lot of value to your code; see the examples above.
+
+#Installation
+
+Validated is available via the usual suspects.
+
+## CocoaPods
+
+You can install Validated via CocoaPods by adding it to your `Podfile`:
+
+	use_frameworks!
+
+	source 'https://github.com/CocoaPods/Specs.git'
+	platform :ios, '8.0'
+
+	pod 'Validated'
+
+And run `pod install`.
+
+## Carthage
+
+You can install Validated via [Carthage]() by adding the following line to your Cartfile:
+
+    github "Ben-G/Validated"
+
 
 # Get in touch
 
