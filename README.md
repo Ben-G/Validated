@@ -1,3 +1,6 @@
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) [![License MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/ReSwift/ReSwift/blob/master/LICENSE.md)
+
+
 #Validated
 
 Validated is a μ-library (~50 Source Lines of Code) that allows you make better use of Swift's type system by providing tools for easily generating new types with built-in guarantees.
