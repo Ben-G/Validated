@@ -8,6 +8,11 @@
 
 @testable import Validated
 
+/**
+ Example validators that are used throughout the unit tests.
+ These should also be a good starting point for your custom `Validator` types.
+ */
+
 struct NonEmptyStringValidator: Validator {
     static func validate(value: String) -> Bool {
         if !value.isEmpty {

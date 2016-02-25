@@ -8,6 +8,10 @@
 
 import Validated
 
+/**
+ Example of a validator that validates a custom type.
+ */
+
 struct User {
     let username: String
     let loggedIn: Bool

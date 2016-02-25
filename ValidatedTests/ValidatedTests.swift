@@ -9,6 +9,10 @@
 import XCTest
 import Validated
 
+/**
+ The following tests use multiple example validators to ensure that invalid values
+ cannot be constructed, while valid ones can be.
+*/
 class ValidatedTests: XCTestCase {
 
     // MARK: Basic Validate Tests
