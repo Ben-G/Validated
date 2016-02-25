@@ -12,12 +12,12 @@ public protocol Validator {
     static func validate(value: WrappedType) -> Bool
 }
 
-public struct Validated<WrapperType, T: Validator where T.WrappedType == WrapperType> {
+public struct Validated<WrapperType, V: Validator where V.WrappedType == WrapperType> {
     public let value: WrapperType
 
-    public init?(_ wrapped: WrapperType) {
-        if T.validate(wrapped) {
-            self.value = wrapped
+    public init?(_ value: WrapperType) {
+        if V.validate(value) {
+            self.value = value
         } else {
             return nil
         }
@@ -25,16 +25,38 @@ public struct Validated<WrapperType, T: Validator where T.WrappedType == Wrapper
 }
 
 public struct Validated2<
-    WrapperType, T: Validator,
-    F: Validator where T.WrappedType == WrapperType,
-    F.WrappedType == WrapperType> {
-        public let value: WrapperType
+    WrapperType,
+    V1: Validator,
+    V2: Validator where
+        V1.WrappedType == WrapperType,
+        V2.WrappedType == WrapperType> {
+            public let value: WrapperType
 
-        public init?(_ string: WrapperType) {
-            if T.validate(string) && F.validate(string) {
-                self.value = string
-            } else {
-                return nil
+            public init?(_ value: WrapperType) {
+                if V1.validate(value) && V2.validate(value) {
+                    self.value = value
+                } else {
+                    return nil
+                }
             }
-        }
 }
+
+public struct Validated3<
+    WrapperType,
+    V1: Validator,
+    V2: Validator,
+    V3: Validator where
+        V1.WrappedType == WrapperType,
+        V2.WrappedType == WrapperType,
+        V3.WrappedType == WrapperType> {
+    public let value: WrapperType
+
+    public init?(_ value: WrapperType) {
+        if V1.validate(value) && V2.validate(value) && V3.validate(value) {
+            self.value = value
+        } else {
+            return nil
+        }
+    }
+}
+
