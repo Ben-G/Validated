@@ -20,8 +20,8 @@ struct _NonEmptyString: Validator {
 
 struct _AllCapsLatinString: Validator {
     static func validate(value: String) -> Bool {
-        return value.characters.reduce(true) { accu, character in
-            return ("A"..."Z").contains(character)
+        return value.characters.reduce(true) { accumulator, character in
+            return accumulator && ("A"..."Z").contains(character)
         }
     }
 }
