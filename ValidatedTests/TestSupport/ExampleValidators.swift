@@ -13,9 +13,9 @@
  These should also be a good starting point for your custom `Validator` types.
  */
 
-struct NonEmptyStringValidator: Validator {
+struct EmptyStringValidator: Validator {
     static func validate(value: String) -> Bool {
-        return !value.isEmpty
+        return value.isEmpty
     }
 }
 
@@ -35,9 +35,9 @@ struct ContainsYorZ: Validator {
     }
 }
 
-struct NonEmptyCollectionValidator<T: CollectionType>: Validator {
+struct EmptyCollectionValidator<T: CollectionType>: Validator {
     static func validate(value: T) -> Bool {
-        return !value.isEmpty
+        return value.isEmpty
     }
 }
 

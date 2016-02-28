@@ -82,3 +82,29 @@ public struct Validated3<
     }
 }
 
+/// Validator wrapper which is valid when `V1` and `V2` validated to `true`.
+public struct And<
+    V1: Validator,
+    V2: Validator where
+        V1.WrappedType == V2.WrappedType>: Validator {
+    public static func validate(value: V1.WrappedType) -> Bool {
+        return V1.validate(value) && V2.validate(value)
+    }
+}
+
+/// Validator wrapper which is valid when either `V1` or `V2` validated to `true`.
+public struct Or<
+    V1: Validator,
+    V2: Validator where
+        V1.WrappedType == V2.WrappedType>: Validator {
+    public static func validate(value: V1.WrappedType) -> Bool {
+        return V1.validate(value) || V2.validate(value)
+    }
+}
+
+/// Validator wrapper which is valid when `V1` validated to `false`.
+public struct Not<V1: Validator>: Validator {
+    public static func validate(value: V1.WrappedType) -> Bool {
+        return !V1.validate(value)
+    }
+}
