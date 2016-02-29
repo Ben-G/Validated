@@ -15,12 +15,12 @@
 	<key>CFBundlePackageType</key>
 	<string>FMWK</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>$(DYLIB_CURRENT_VERSION)</string>
 	<key>CFBundleSignature</key>
-	<string>????</string>
+	<string>$(BUNDLE_SIGNATURE)</string>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
-	<key>NSPrincipalClass</key>
-	<string></string>
+	<key>NSHumanReadableCopyright</key>
+	<string>$(FRAMEWORK_LICENSE)</string>
 </dict>
 </plist>
