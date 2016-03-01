@@ -8,9 +8,7 @@
 
 import Validated
 
-/**
- Example of a validator that validates a custom type.
- */
+// Example of a validator that validates a custom type.
 
 struct User {
     let username: String

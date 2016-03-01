@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "25C79A9C1C7EA40B00F76B49"
+               BlueprintIdentifier = "BC97865D1C84A30C00A68A31"
                BuildableName = "Validated.framework"
-               BlueprintName = "Validated"
+               BlueprintName = "Validated tvOS"
                ReferencedContainer = "container:Validated.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -28,26 +28,7 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "25C79AA61C7EA40B00F76B49"
-               BuildableName = "ValidatedTests.xctest"
-               BlueprintName = "ValidatedTests"
-               ReferencedContainer = "container:Validated.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "25C79A9C1C7EA40B00F76B49"
-            BuildableName = "Validated.framework"
-            BlueprintName = "Validated"
-            ReferencedContainer = "container:Validated.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -64,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "25C79A9C1C7EA40B00F76B49"
+            BlueprintIdentifier = "BC97865D1C84A30C00A68A31"
             BuildableName = "Validated.framework"
-            BlueprintName = "Validated"
+            BlueprintName = "Validated tvOS"
             ReferencedContainer = "container:Validated.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -82,9 +63,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "25C79A9C1C7EA40B00F76B49"
+            BlueprintIdentifier = "BC97865D1C84A30C00A68A31"
             BuildableName = "Validated.framework"
-            BlueprintName = "Validated"
+            BlueprintName = "Validated tvOS"
             ReferencedContainer = "container:Validated.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
