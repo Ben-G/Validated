@@ -195,9 +195,12 @@ class ValidatedTests: XCTestCase {
         do {
             _ = try NonEmptyString("").value
         } catch let error as ValidatorError {
-            // Check that error returns validator metatype and wrapper value
             XCTAssertTrue(error.validator == Not<EmptyStringValidator>.self)
             XCTAssertTrue(error.wrapperValue as! String == "")
+            XCTAssertEqual(
+                error.description,
+                "Value: '' <String>, failed validation of Validator: Not<EmptyStringValidator>"
+            )
         } catch {}
 
         // Create a non-empty string
