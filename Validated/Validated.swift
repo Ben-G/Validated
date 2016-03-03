@@ -1,10 +1,8 @@
-//
 //  Validated.swift
 //  Validated
 //
 //  Created by Benji Encz on 2/24/16.
 //  Copyright © 2016 Benjamin Encz. All rights reserved.
-//
 
 /// This protocol needs to be implemented in order to add a requirement to
 /// a wrapped type.
@@ -23,9 +21,23 @@ public protocol Validator {
     /// Validates if a value of the wrapped type fullfills the requirements of the
     /// wrapper type.
     ///
-    /// - parameter validate: An instance of the `WrappedType`
+    /// - parameter validate: An instance of the `WrappedType`  
     /// - returns: A `Bool` indicating success(`true`)/failure(`false`) of the validation
     static func validate(value: WrappedType) -> Bool
+}
+
+
+/// Error that is thrown when a validation fails. Proivdes the validator type and 
+/// the value that failed validation
+public struct ValidatorError: ErrorType, CustomStringConvertible {
+    /// The value that failed validation.
+    public let wrapperValue: Any
+    /// Type of a specific `Validator`. `Any` is used because `Validator` has associated type requirements.
+    public let validator: Any.Type
+
+    public var description: String {
+        return "Value: '\(wrapperValue)' <\(wrapperValue.dynamicType)>, failed validation of Validator: \(validator.self)"
+    }
 }
 
 /// Wraps a type together with one validator. Provides a failable initializer
@@ -37,50 +49,21 @@ public struct Validated<WrapperType, V: Validator where V.WrappedType == Wrapper
     /// If you are able to access this property; it means the wrappedType passes the validator.
     public let value: WrapperType
 
+    /// Throwing initializer that will *not* throw an error if the provided value fulfills the requirements 
+    /// specified by the `Validator`.
+    public init(_ value: WrapperType) throws {
+        guard V.validate(value) else {
+            throw ValidatorError(
+                wrapperValue: value,
+                validator: V.self)
+        }
+
+        self.value = value
+    }
+
     /// Failible initializer that will only succeed if the provided value fulfills the requirements specified by the `Validator`.
-    public init?(_ value: WrapperType) {
-        guard V.validate(value) else { return nil }
-        self.value = value
-    }
-}
-
-/// Wraps a type together with two validators. Provides a failable initializer
-/// that will only return a value of `Validated` if the provided `WrapperType` value
-/// fulfills the requirements of both specified `Validator` types.
-public struct Validated2<
-    WrapperType,
-    V1: Validator,
-    V2: Validator where
-        V1.WrappedType == WrapperType,
-        V2.WrappedType == WrapperType> {
-    /// The value that passes the two provided `Validator`s.
-    public let value: WrapperType
-
-    /// Failible initializer that will only succeed if the provided value fulfills the requirements specified by the `Validator`s.
-    public init?(_ value: WrapperType) {
-        guard V1.validate(value) && V2.validate(value) else { return nil }
-        self.value = value
-    }
-}
-
-/// Wraps a type together with three validators. Provides a failable initializer
-/// that will only return a value of `Validated` if the provided `WrapperType` value
-/// fulfills the requirements of all three specified `Validator` types.
-public struct Validated3<
-    WrapperType,
-    V1: Validator,
-    V2: Validator,
-    V3: Validator where
-        V1.WrappedType == WrapperType,
-        V2.WrappedType == WrapperType,
-        V3.WrappedType == WrapperType> {
-    /// The value that passes the three provided `Validator`s.
-    public let value: WrapperType
-
-    /// Failable initializer that will only succeed if the provided value fulfills the requirements specified by the `Validator`s.
-    public init?(_ value: WrapperType) {
-        guard V1.validate(value) && V2.validate(value) && V3.validate(value) else { return nil }
-        self.value = value
+    public init?(value: WrapperType) {
+        try? self.init(value)
     }
 }
 

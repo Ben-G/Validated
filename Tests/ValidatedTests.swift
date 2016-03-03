@@ -21,11 +21,11 @@ class ValidatedTests: XCTestCase {
         // Define a type for a non-empty string
         typealias NonEmptyString = Validated<String, Not<EmptyStringValidator>>
         // Create an empty string
-        let valueNotValidated = NonEmptyString("")?.value
+        let valueNotValidated = NonEmptyString(value: "")?.value
         XCTAssertNil(valueNotValidated)
 
         // Create a non-empty string
-        let valueValidated = NonEmptyString("This is OK.")?.value
+        let valueValidated = NonEmptyString(value: "This is OK.")?.value
         XCTAssertEqual(valueValidated, "This is OK.")
     }
 
@@ -33,10 +33,10 @@ class ValidatedTests: XCTestCase {
         // Define a type for a non-empty collection
         typealias NonEmptyListOfStrings = Validated<[String], Not<EmptyCollectionValidator<[String]>>>
         // Create an empty list of strings
-        let valueNotValidated = NonEmptyListOfStrings([])?.value
+        let valueNotValidated = NonEmptyListOfStrings(value: [])?.value
         XCTAssertNil(valueNotValidated)
 
-        let valueValidated = NonEmptyListOfStrings(["A", "B"])?.value
+        let valueValidated = NonEmptyListOfStrings(value: ["A", "B"])?.value
         XCTAssertEqual(valueValidated!, ["A", "B"])
     }
 
@@ -44,10 +44,10 @@ class ValidatedTests: XCTestCase {
         // Define a type for an array of ints that has a sum larger 20
         typealias SumLarger20Array = Validated<[Int], SumLarger20Validator>
 
-        let valueNotValidated = SumLarger20Array([8,8])?.value
+        let valueNotValidated = SumLarger20Array(value: [8,8])?.value
         XCTAssertNil(valueNotValidated)
 
-        let valueValidated = SumLarger20Array([8,8,8])?.value
+        let valueValidated = SumLarger20Array(value: [8,8,8])?.value
         XCTAssertEqual(valueValidated!, [8,8,8])
     }
 
@@ -57,10 +57,10 @@ class ValidatedTests: XCTestCase {
         // Define a type for a collection with more than 10 elements
         typealias MoreThan10ElementsIntArray = Validated<[Int], CountGreater10Validator<[Int]>>
 
-        let valueNotValidated = MoreThan10ElementsIntArray([1,2,3,4,5,6])?.value
+        let valueNotValidated = MoreThan10ElementsIntArray(value: [1,2,3,4,5,6])?.value
         XCTAssertNil(valueNotValidated)
 
-        let valueValidated = MoreThan10ElementsIntArray([1,2,3,4,5,6,7,8,9,10,11])?.value
+        let valueValidated = MoreThan10ElementsIntArray(value: [1,2,3,4,5,6,7,8,9,10,11])?.value
         XCTAssertEqual(valueValidated!, [1,2,3,4,5,6,7,8,9,10,11])
     }
 
@@ -71,66 +71,66 @@ class ValidatedTests: XCTestCase {
         typealias LoggedInUser = Validated<User, LoggedInValidator>
 
         let valueNotValidated = LoggedInUser(
-            User(username: "User", loggedIn: false)
+            value: User(username: "User", loggedIn: false)
         )?.value
         XCTAssertNil(valueNotValidated)
 
         let valueValidated = LoggedInUser(
-            User(username: "User", loggedIn: true)
+            value: User(username: "User", loggedIn: true)
         )?.value
         XCTAssertEqual(valueValidated?.username, "User")
     }
 
-    // MARK: Validate2 Tests
+    // MARK: 2 Validator Test
 
     func testValidatesEmptyStringAndAllCaps1() {
         // Define a type for a non-empty all caps latin string
         typealias AllCapsNonEmptyString =
-            Validated2<String, Not<EmptyStringValidator>, AllCapsLatinStringValidator>
+            Validated<String, And<Not<EmptyStringValidator>, AllCapsLatinStringValidator>>
 
         // Create an empty string
-        let valueNotValidated = AllCapsNonEmptyString("")?.value
+        let valueNotValidated = AllCapsNonEmptyString(value: "")?.value
         XCTAssertNil(valueNotValidated)
 
         // Create a string with lowercase letters
-        let valueNotValidated2 = AllCapsNonEmptyString("xYZcF")?.value
+        let valueNotValidated2 = AllCapsNonEmptyString(value: "xYZcF")?.value
         XCTAssertNil(valueNotValidated2)
 
         // Create an all caps string
-        let valueValidated = AllCapsNonEmptyString("XYZCF")?.value
+        let valueValidated = AllCapsNonEmptyString(value: "XYZCF")?.value
         XCTAssertEqual(valueValidated, "XYZCF")
     }
 
     func testValidatesCountGreater10AndSumLarger20() {
         typealias MoreThan10ElementsWithSumGreater20 =
-            Validated2<[Int], CountGreater10Validator<[Int]>, SumLarger20Validator>
+            Validated<[Int], And<CountGreater10Validator<[Int]>, SumLarger20Validator>>
 
-        let valueNotValidated = MoreThan10ElementsWithSumGreater20([100,2,400,5,6])?.value
+        let valueNotValidated = MoreThan10ElementsWithSumGreater20(value: [100,2,400,5,6])?.value
         XCTAssertNil(valueNotValidated)
 
         let valueNotValidated2 = MoreThan10ElementsWithSumGreater20(
-            [1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+            value: [1,1,1,1,1,1,1,1,1,1,1,1,1,1]
         )?.value
         XCTAssertNil(valueNotValidated2)
 
         let valueValidated = MoreThan10ElementsWithSumGreater20(
-            [100,1,1,1,1,1,1,1,1,1,1,1,1,100]
+            value: [100,1,1,1,1,1,1,1,1,1,1,1,1,100]
         )?.value
         XCTAssertEqual(valueValidated!, [100,1,1,1,1,1,1,1,1,1,1,1,1,100])
     }
 
-    // MARK: Validate3 Tests
+    // MARK: 3 Validator Test
 
     func testValidatesEmptyStringAndAllCapsContainsYorZ() {
         typealias AllCapsNonEmptyStringWithYorZ =
-            Validated3<String, Not<EmptyStringValidator>, AllCapsLatinStringValidator, ContainsYorZ>
+            Validated<String, And<And<Not<EmptyStringValidator>, AllCapsLatinStringValidator>, ContainsYorZ>>
 
         // Create a non-complying string
-        let valueNotValidated = AllCapsNonEmptyStringWithYorZ("ABCDEF")?.value
+        let valueNotValidated = AllCapsNonEmptyStringWithYorZ(value: "ABCDEF")?.value
         XCTAssertNil(valueNotValidated)
 
         // Create a compying string
-        let valueValidated = AllCapsNonEmptyStringWithYorZ("ABCDEFY")?.value
+        let valueValidated = AllCapsNonEmptyStringWithYorZ(value: "ABCDEFY")?.value
         XCTAssertEqual(valueValidated, "ABCDEFY")
     }
     
@@ -142,15 +142,15 @@ class ValidatedTests: XCTestCase {
             Validated<String, And<Not<EmptyStringValidator>, AllCapsLatinStringValidator>>
 
         // Create an empty string
-        let valueNotValidated = AllCapsNonEmptyString("")?.value
+        let valueNotValidated = AllCapsNonEmptyString(value: "")?.value
         XCTAssertNil(valueNotValidated)
 
         // Create a string with lowercase letters
-        let valueNotValidated2 = AllCapsNonEmptyString("xYZcF")?.value
+        let valueNotValidated2 = AllCapsNonEmptyString(value: "xYZcF")?.value
         XCTAssertNil(valueNotValidated2)
 
         // Create an all caps string
-        let valueValidated = AllCapsNonEmptyString("XYZCF")?.value
+        let valueValidated = AllCapsNonEmptyString(value: "XYZCF")?.value
         XCTAssertEqual(valueValidated, "XYZCF")
     }
     
@@ -160,15 +160,15 @@ class ValidatedTests: XCTestCase {
             Validated<String, Or<EmptyStringValidator, AllCapsLatinStringValidator>>
         
         // Create an empty string
-        let valueValidated1 = AllCapsOrEmptyString("")?.value
+        let valueValidated1 = AllCapsOrEmptyString(value: "")?.value
         XCTAssertEqual(valueValidated1, "")
         
         // Create a string with lowercase letters
-        let valueNotValidated = AllCapsOrEmptyString("xYZcF")?.value
+        let valueNotValidated = AllCapsOrEmptyString(value: "xYZcF")?.value
         XCTAssertNil(valueNotValidated)
         
         // Create an all caps string
-        let valueValidated2 = AllCapsOrEmptyString("XYZCF")?.value
+        let valueValidated2 = AllCapsOrEmptyString(value: "XYZCF")?.value
         XCTAssertEqual(valueValidated2, "XYZCF")
     }
     
@@ -178,12 +178,33 @@ class ValidatedTests: XCTestCase {
             Validated<String, Not<EmptyStringValidator>>
         
         // Create an empty string
-        let valueNotValidated = AllCapsNonEmptyString("")?.value
+        let valueNotValidated = AllCapsNonEmptyString(value: "")?.value
         XCTAssertNil(valueNotValidated)
         
         // Create an all caps string
-        let valueValidated = AllCapsNonEmptyString("abC")?.value
+        let valueValidated = AllCapsNonEmptyString(value: "abC")?.value
         XCTAssertEqual(valueValidated, "abC")
     }
 
+    // MARK: Error Handling Tests
+
+    func testThrowingInitializer() {
+        // Define a type for a non-empty string
+        typealias NonEmptyString = Validated<String, Not<EmptyStringValidator>>
+        // Create an empty string
+        do {
+            _ = try NonEmptyString("").value
+        } catch let error as ValidatorError {
+            XCTAssertTrue(error.validator == Not<EmptyStringValidator>.self)
+            XCTAssertTrue(error.wrapperValue as! String == "")
+            XCTAssertEqual(
+                error.description,
+                "Value: '' <String>, failed validation of Validator: Not<EmptyStringValidator>"
+            )
+        } catch {}
+
+        // Create a non-empty string
+        let valueValidated = try! NonEmptyString("This is OK.").value
+        XCTAssertEqual(valueValidated, "This is OK.")
+    }
 }
