@@ -63,22 +63,23 @@ Note, that it is not required to provide a typealias, but for most cases it is r
 
 **And that's it!**
 
-`LoggedInUser` now has a failable initializer that takes a `User`. If the passed in `User` fulfills the logged-in requirement you will have a `LoggedInUser`, otherwise `nil`.
+`LoggedInUser` now has a failable initializer that takes a `User`. If the passed in `User` fulfills the logged-in requirement you will have a `LoggedInUser`, otherwise `nil`. Additionally `LoggedInUser` provides a throwing initializer, in case you prefer to handle failed validations as errors instead of `nil` values.
 
 The underlying value (the full `User` value) is stored in the `.value` property of `LoggedInUser`.
 
 ##Beyond the Basics
 
-Validated provides two further features that might be non-obvious.
+Validated provides some further features that might be non-obvious.
 
-###Validated2, Validated3
+###Composing Validators with Logical Operators
 
-Using `Validated2` or `Validated3` you can create a new type that has two or three requirements, respectively. All requirements need to be verified successfully in order for the type to initialize:
+Validated offers `Validator` types for logical operations that allow you to require multiple validations in different combinations. E.g. you can use the `And` validator to require that two requirements must be met for your type to intializer:
 
 ```swift
 typealias AllCapsNonEmptyString =
-            Validated2<String, NonEmptyStringValidator, AllCapsLatinStringValidator>
+            Validated<String, And<NonEmptyStringValidator, AllCapsLatinStringValidator>>
 ```
+`Or` and `Not` are provided as additional validators. You can take a look at the specs for additional examples.
 
 ###Generic Validators
 
@@ -138,7 +139,7 @@ And run `pod install`.
 
 ## Carthage
 
-You can install Validated via [Carthage]() by adding the following line to your Cartfile:
+You can install Validated via Carthage by adding the following line to your Cartfile:
 
     github "Ben-G/Validated"
 

@@ -1,9 +1,3 @@
-//  Validated.swift
-//  Validated
-//
-//  Created by Benji Encz on 2/24/16.
-//  Copyright © 2016 Benjamin Encz. All rights reserved.
-
 /// This protocol needs to be implemented in order to add a requirement to
 /// a wrapped type.
 /// Implementers receive the wrapped type and need to determine if its values
