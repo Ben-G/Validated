@@ -3,18 +3,18 @@
 
 **Breaking API Changes:**
 
-  -	Removed `Validated2` and `Validated3` in favor of introduced logical wrapper validators - @Ben-G on suggestion of @tomquist
-  - Failable initializer of `Validated` now requires explicit `value` argument due to introduction of throwing initializer - @Ben-G
+- Removed `Validated2` and `Validated3` in favor of introduced logical wrapper validators - @Ben-G on suggestion of @tomquist
+- Failable initializer of `Validated` now requires explicit `value` argument due to introduction of throwing initializer - @Ben-G
   
 **API Additions:**
 
-  - Added wrapper validators for logical operators - @tomquist
-  - Added throwing initializer for `Validated` - @Ben-G upon suggestion of @radex
+- Added wrapper validators for logical operators - @tomquist
+- Added throwing initializer for `Validated` - @Ben-G upon suggestion of @radex
 
 **Other Changes:**
 
-  - Major Refactoring of `Validated` Type - @dehesa
-  - Addition of OSX, tvOS and watchOS targets - @dehesae
+- Major Refactoring of `Validated` Type - @dehesa
+- Addition of OSX, tvOS and watchOS targets - @dehesae
 
 #1.0
 *Released: 02/24/2016*
