@@ -1,3 +1,9 @@
+#2.0.1
+*Released: 05/05/2016*
+
+- Lowered iOS Deployment Target to 8.0 - @loganmoseley
+- Update usage of `typealias` to `associatedtype` - @AndrewSB
+
 #2.0
 *Released: 03/02/2016*
 
