@@ -10,7 +10,7 @@
 /// }
 /// ~~~
 public protocol Validator {
-    typealias WrappedType
+    associatedtype WrappedType
 
     /// Validates if a value of the wrapped type fullfills the requirements of the
     /// wrapper type.
