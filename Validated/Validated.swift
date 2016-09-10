@@ -15,14 +15,14 @@ public protocol Validator {
     /// Validates if a value of the wrapped type fullfills the requirements of the
     /// wrapper type.
     ///
-    /// - parameter validate: An instance of the `WrappedType`  
+    /// - parameter validate: An instance of the `WrappedType`
     /// - returns: A `Bool` indicating success(`true`)/failure(`false`) of the validation
     static func validate(value: WrappedType) -> Bool
 }
 
 
-/// Error that is thrown when a validation fails. Proivdes the validator type and 
-/// the value that failed validation
+/// Error that is thrown when a validation fails. Provides the validator type and
+/// the value that failed validation.
 public struct ValidatorError: ErrorType, CustomStringConvertible {
     /// The value that failed validation.
     public let wrapperValue: Any
@@ -43,7 +43,7 @@ public struct Validated<WrapperType, V: Validator where V.WrappedType == Wrapper
     /// If you are able to access this property; it means the wrappedType passes the validator.
     public let value: WrapperType
 
-    /// Throwing initializer that will *not* throw an error if the provided value fulfills the requirements 
+    /// Throwing initializer that will *not* throw an error if the provided value fulfills the requirements
     /// specified by the `Validator`.
     public init(_ value: WrapperType) throws {
         guard V.validate(value) else {
