@@ -1,11 +1,5 @@
 [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/Validated.svg?style=flat-square)](https://cocoapods.org/pods/Validated) [![Platform support](https://img.shields.io/badge/platform-ios%20%7C%20osx%20%7C%20tvos%20%7C%20watchos-lightgrey.svg?style=flat-square)](https://github.com/Ben-G/Validated/blob/master/LICENSE.md)[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) [![License MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/Ben-G/Validated/blob/master/LICENSE.md)
 
-The `master` branch currently supports Swift 2.2. 
-We have separate branches for:
-
-- [Swift 2.3](https://github.com/Ben-G/Validated/tree/swift-2.3)
-- [Swift 3.0](https://github.com/Ben-G/Validated/tree/swift-3.0)
-
 #Validated
 
 Validated is a μ-library (~50 Source Lines of Code) that allows you make better use of Swift's type system by providing tools for easily generating new types with built-in guarantees.
@@ -137,7 +131,7 @@ You can install Validated via CocoaPods by adding it to your `Podfile`:
 
 	source 'https://github.com/CocoaPods/Specs.git'
 	platform :ios, '8.0'
-
+	
 	pod 'Validated'
 
 And run `pod install`.

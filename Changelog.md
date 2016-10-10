@@ -1,4 +1,11 @@
+# 3.0.0
+
+*Released: 10/10/2016*
+
+- Migrated to Swift 3.0 - @Ben-G
+
 #2.0.1
+
 *Released: 05/05/2016*
 
 - Lowered iOS Deployment Target to 8.0 - @loganmoseley
@@ -11,7 +18,7 @@
 
 - Removed `Validated2` and `Validated3` in favor of introduced logical wrapper validators - @Ben-G on suggestion of @tomquist
 - Failable initializer of `Validated` now requires explicit `value` argument due to introduction of throwing initializer - @Ben-G
-  
+
 **API Additions:**
 
 - Added wrapper validators for logical operators - @tomquist
@@ -25,4 +32,4 @@
 #1.0
 *Released: 02/24/2016*
 
- - Initial Release - @Ben-G
+- Initial Release - @Ben-G
