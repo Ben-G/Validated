@@ -17,7 +17,7 @@ struct User {
 
 struct LoggedInValidator: Validator {
 
-    static func validate(value: User) -> Bool {
+    static func validate(_ value: User) -> Bool {
         return value.loggedIn
     }
 
