@@ -1,6 +1,6 @@
 [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/Validated.svg?style=flat-square)](https://cocoapods.org/pods/Validated) [![Platform support](https://img.shields.io/badge/platform-ios%20%7C%20osx%20%7C%20tvos%20%7C%20watchos-lightgrey.svg?style=flat-square)](https://github.com/Ben-G/Validated/blob/master/LICENSE.md)[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) [![License MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/Ben-G/Validated/blob/master/LICENSE.md)
 
-#Validated
+# Validated
 
 Validated is a μ-library (~50 Source Lines of Code) that allows you make better use of Swift's type system by providing tools for easily generating new types with built-in guarantees.
 
@@ -13,7 +13,7 @@ Using validators you can define new types that add guarantees to existing types:
 typealias NonEmptyString = Validated<String, NonEmptyStringValidator>
 ```
 
-##Example
+## Example
 
 You might have a function in your code that only knows how to work with a `User` value when the user is logged in. Usually you will implement this requirement in code & add documentation, but you don't have an easy way of expressing this invariant in the type signature:
 
@@ -66,11 +66,11 @@ Note, that it is not required to provide a typealias, but for most cases it is r
 
 The underlying value (the full `User` value) is stored in the `.value` property of `LoggedInUser`.
 
-##Beyond the Basics
+## Beyond the Basics
 
 Validated provides some further features that might be non-obvious.
 
-###Composing Validators with Logical Operators
+### Composing Validators with Logical Operators
 
 Validated offers `Validator` types for logical operations that allow you to require multiple validations in different combinations. E.g. you can use the `And` validator to require that two requirements must be met for your type to intializer:
 
@@ -80,7 +80,7 @@ typealias AllCapsNonEmptyString =
 ```
 `Or` and `Not` are provided as additional validators. You can take a look at the specs for additional examples.
 
-###Generic Validators
+### Generic Validators
 
 A `Validator` can itself be generic. This is useful if you want to provide verifications for a whole category of types. The example validator `NonEmptyCollectionValidator` can be applied to all validator types by using a generic requirement:
 
@@ -119,7 +119,7 @@ ListOf3([1,2,3,4]) // type = nil
 
 However, these statically provided checks can still add a lot of value to your code; see the examples above.
 
-#Installation
+# Installation
 
 Validated is available via the usual suspects.
 
